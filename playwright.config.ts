@@ -12,7 +12,7 @@ export default defineConfig({
     video: 'on',
     browserName: 'chromium',
     launchOptions: {
-      slowMo: 50
+      slowMo: 1500
     }
   }
 });

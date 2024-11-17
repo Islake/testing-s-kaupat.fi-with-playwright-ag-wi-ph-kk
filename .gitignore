@@ -1,13 +1,6 @@
-# Playwright test results and reports
-test-results/
-playwright-report/
-
 # Playwright downloads
 downloads/
 
-# Playwright screenshots and videos
-screenshots/
-videos/
 
 # Playwright trace files
 trace.zip

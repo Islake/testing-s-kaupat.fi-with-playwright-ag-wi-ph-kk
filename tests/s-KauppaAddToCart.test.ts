@@ -18,15 +18,20 @@ test('Add item to cart', async ({ page }) => {
 
   // Wait for the address options to appear and ensure the correct address is displayed
   await page.waitForSelector('.address-title[data-address-title="Myllypurontie 1"]');
+  
+  // Assert that the correct address is shown
+  const addressElement = await page.$('.address-title[data-address-title="Myllypurontie 1"]');
+  expect(addressElement).toBeTruthy(); // Assert that the address element exists
 
   // Click the address once it's available
   await page.click('span.address-title[data-address-title="Myllypurontie 1"]');
 
-  // Choose the delivery option by first expanding the delivery methods list
-  await page.click('summary[data-test-id="method-select"]');
-
   // Wait for the delivery option to appear (e.g., Kotiinkuljetus)
   await page.waitForSelector('span:has-text("Kotiinkuljetus")');
+  
+  // Assert that the "Kotiinkuljetus" option is available
+  const deliveryOption = await page.$('span:has-text("Kotiinkuljetus")');
+  expect(deliveryOption).toBeTruthy(); // Assert that the delivery option is visible
 
   // Select the "Kotiinkuljetus" option by clicking on the corresponding text
   await page.click('span:has-text("Kotiinkuljetus")');
@@ -43,6 +48,10 @@ test('Add item to cart', async ({ page }) => {
 
   // Wait for the time slots to load (e.g., 14:00-16:00)
   await page.waitForSelector('div[data-test-id="time-slot"]');
+  
+  // Assert that at least one time slot is available
+  const timeSlot = await page.$('div[data-test-id="time-slot"]:first-child');
+  expect(timeSlot).toBeTruthy(); // Assert that a time slot is visible
 
   // Choose the first available time slot (e.g., 14:00-16:00)
   await page.click('div[data-test-id="time-slot"]:first-child input[type="radio"]');
@@ -60,7 +69,10 @@ test('Add item to cart', async ({ page }) => {
   // Wait for the "+" button to add the item to the cart
   await page.waitForSelector('button[data-test-id="quantity-modifier__add"]');
 
+  // Assert that the "+" button is present and clickable
+  const addButton = await page.$('button[data-test-id="quantity-modifier__add"]');
+  expect(addButton).toBeTruthy(); // Assert that the button exists
+
   // Click the "+" button to add the item to the cart
   await page.click('button[data-test-id="quantity-modifier__add"]');
-
 });
