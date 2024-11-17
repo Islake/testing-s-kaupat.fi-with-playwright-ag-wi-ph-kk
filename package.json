@@ -1,0 +1,15 @@
+{
+  "name": "s-kauppa",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.48.2"
+  },
+  "dependencies": {
+    "playwright": "^1.48.2",
+    "playwright-extra": "^4.3.6",
+    "playwright-extra-plugin-stealth": "^0.0.1"
+  }
+}
